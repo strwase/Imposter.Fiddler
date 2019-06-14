@@ -153,7 +153,8 @@ namespace Imposter.Fiddler
                 }
 
                 _profiles.DropDownItems.Add(item);
-                _profileMenuMap.Add(profile.ProfileId, item);
+                if (!_profileMenuMap.Any(x => x.Key == profile.ProfileId))
+                    _profileMenuMap.Add(profile.ProfileId, item);
             }
         }
 
@@ -300,7 +301,7 @@ namespace Imposter.Fiddler
             _settings.Save();
         }
 
-        #endregion
+        #endregion Menu and Menu Events
 
         public void AutoTamperRequestBefore(Session oSession)
         {
@@ -454,7 +455,7 @@ namespace Imposter.Fiddler
             {
                 StartProfile(profileId);
             }
-                
+
             return true;
         }
 
@@ -514,6 +515,6 @@ namespace Imposter.Fiddler
             return;
         }
 
-        #endregion
+        #endregion Not Implemented
     }
 }
